@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <script th:src="@{/cart.js}"></script>
+  <link rel="stylesheet" th:href="@{/shopping.css}">
+</head>
+<body>
+<div class="table">
+  <h2 id="title">Cart List</h2>
+  <form action="" method="post" id="deleteForm">
+    <input type="hidden" name="pNum" id="pNum">
+  </form>
+  <table>
+    <tr>
+      <th>Number</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Product</th>
+      <th>Amount</th>
+      <th>Price</th>
+      <th>delete?</th>
+    </tr>
+    <tr th:each="orders : ${orders}">
+      <td><span th:text="${orders.pNum}"></span></td>
+      <td><span th:text="${orders.usrId}"></span></td>
+      <td><span th:text="${orders.usrName}"></span></td>
+      <td><span th:text="${orders.usrAddress}"></span></td>
+      <td><span th:text="${orders.pName}"></span></td>
+      <td><span th:text="|${orders.pAmount}개|"></span></td>
+      <td><span th:text="|${orders.pPrice}원|"></span></td>
+      <td>
+        <input th:num="${orders.pNum}" type="button" value="Delete" onclick="deleteCart(this.getAttribute('num'))">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="8">
+          <input type="button" onclick="location.href='../prac2';" value="Go back to Home">
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

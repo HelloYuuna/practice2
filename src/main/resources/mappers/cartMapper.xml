@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.softsociety.practice2.dao.CartDAO">
+    <insert id="insertCart" parameterType="OrderList">
+        INSERT INTO ORDERLIST
+        VALUES (ORDERS_SEQ.nextval,'cha_mame','차슈와 콩이','도쿄도 스기나미구'
+                , #{pName}, #{pAmount}, #{pPrice}, #{pNum})
+    </insert>
+    <select id="selectAll" resultType="OrderList">
+        SELECT * FROM ORDERLIST
+    </select>
+    <delete id="deleteCart" parameterType="String">
+        DELETE FROM ORDERLIST
+        WHERE PNUM = #{pNum}
+    </delete>
+</mapper>
